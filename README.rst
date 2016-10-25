@@ -12,6 +12,5 @@ Helmus, J.J. & Collis, S.M., (2016). The Python ARM Radar Toolkit (Py-ART), a Li
 
 S3 Download code by Scott Collis: https://github.com/scollis/radar_in_the_cloud/blob/master/notebooks/any_nexrad.ipynb
 
-Animation Code by Jonathan Helmus: https://github.com/jjhelmus/presentations/blob/master/2015_SciPy_PyART_talk/SciPy2015_OpenAccessRadar_jjh.ipynb
-
+Animation Code by Jonathan Helmus: `https://github.com/jjhelmus/presentations/blob/master/2015_SciPy_PyART_talk <https://github.com/jjhelmus/presentations/blob/master/2015_SciPy_PyART_talk/SciPy2015_OpenAccessRadar_jjh.ipynb>`_
 Memory Fix Code by Robert Jackson: https://github.com/rcjackson/pyart_practice/blob/master/nexrad_animatedgif.py
