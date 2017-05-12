@@ -139,7 +139,7 @@ def animate(nframe):
                          cmap=pyart.graph.cm.NWSRef,
                          lat_lines=None, lon_lines=None)
     display.basemap.drawcounties()
-
+    del radar
 fig = plt.figure(figsize=(10, 8))
 anim_klot = animation.FuncAnimation(fig, animate,
                                     frames=len(my_data_keys_klot))
