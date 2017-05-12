@@ -29,4 +29,6 @@ fig = plt.figure(figsize=(10, 8))
 anim = animation.FuncAnimation(fig, animate, frames=len(radars))
 anim.save('klot_reflectivity_animation.gif',
           writer='imagemagick', fps=2)
+# Delete radars to conserve memory.
+del radars
 plt.close()
