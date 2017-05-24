@@ -115,6 +115,7 @@ def nexrad_site_datespan(start_date=None, start_date_time=None,
 
 # Conversion of keys to pyart radar objects.
 def radar_keys_to_data(keys):
+    """ Stores keys into temporary localfile to be read with pyart. """
     localfile = tempfile.NamedTemporaryFile()
     keys.get_contents_to_filename(localfile.name)
     # Only pulling two scans for the sake of time and memory.
@@ -123,10 +124,19 @@ def radar_keys_to_data(keys):
 
 
 def datespan(start_date, end_date, delta=timedelta(days=1)):
+    """ Retrieves all dates between the start and end date. """
     current_date = start_date
     while current_date < end_date:
         yield current_date
         current_date += delta
+
+
+# Pull all data keys from NEXRAD between user define start and end datetimes.
+my_data_keys_klot = nexrad_site_datespan(start_date='20161019',
+                                         start_date_time='125000',
+                                         end_date='20161019',
+                                         end_date_time='165000',
+                                         site='klot')
 
 
 # Creating a gif of all volumes between user chosen dates.
@@ -134,12 +144,13 @@ def animate(nframe):
     plt.clf()
     radar = radar_keys_to_data(my_data_keys_klot[nframe])
     display = pyart.graph.RadarMapDisplay(radar)
+    # Delete radar after use to save memory.
+    del radar
     display.plot_ppi_map('reflectivity', sweep=0, resolution='l',
                          vmin=-8, vmax=64, mask_outside=False,
                          cmap=pyart.graph.cm.NWSRef,
                          lat_lines=None, lon_lines=None)
     display.basemap.drawcounties()
-    del radar
 fig = plt.figure(figsize=(10, 8))
 anim_klot = animation.FuncAnimation(fig, animate,
                                     frames=len(my_data_keys_klot))
